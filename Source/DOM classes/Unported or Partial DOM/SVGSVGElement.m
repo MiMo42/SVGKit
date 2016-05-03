@@ -7,8 +7,10 @@
 
 #import "SVGElement_ForParser.h" // to resolve Xcode circular dependencies; in long term, parsing SHOULD NOT HAPPEN inside any class whose name starts "SVG" (because those are reserved classes for the SVG Spec)
 
-#if TARGET_OS_IPHONE
+#if (TARGET_OS_IPHONE)
 #import <UIKit/UIKit.h>
+#else
+#import <Cocoa/Cocoa.h>
 #endif
 
 @interface SVGSVGElement()
@@ -226,7 +228,7 @@
         SVGKitLogVerbose(@"[%@] DEBUG INFO: set document viewBox = %@", [self class], NSStringFromCGRect( CGRectFromSVGRect(self.viewBox)));
 #else
         //mac logging
-     SVGKitLogVerbose(@"[%@] DEBUG INFO: set document viewBox = %@", [self class], NSStringFromRect(self.viewBox));
+     SVGKitLogVerbose(@"[%@] DEBUG INFO: set document viewBox = %@", [self class], NSStringFromRect( NSRectFromCGRect(CGRectFromSVGRect(self.viewBox))));
 #endif   
 	
 }

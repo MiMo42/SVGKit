@@ -1,6 +1,10 @@
 #import "CSSValueList.h"
 #import "CSSValue_ForSubclasses.h"
 
+#if (!TARGET_OS_IPHONE)
+#import "SVGKit-OSX.Globals.h"
+#endif
+
 @interface CSSValueList()
 
 @property(nonatomic,strong) NSArray* internalArray;

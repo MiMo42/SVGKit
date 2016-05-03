@@ -5,6 +5,10 @@
 #import "CSSPrimitiveValue.h"
 #import "CocoaLumberjack/DDFileLogger.h"
 
+#if (!TARGET_OS_IPHONE)
+#import "SVGKit-OSX.Globals.h"
+#endif
+
 @interface CSSStyleDeclaration()
 
 @property(nonatomic,strong) NSMutableDictionary* internalDictionaryOfStylesByCSSClass;

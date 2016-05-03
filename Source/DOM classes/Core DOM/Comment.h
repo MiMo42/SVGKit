@@ -11,6 +11,10 @@
 
 #import "CharacterData.h"
 
+#if (!TARGET_OS_IPHONE)
+#import "SVGKit-OSX.Globals.h"
+#endif
+
 @interface Comment : CharacterData
 
 - (id)initWithValue:(NSString*) v;

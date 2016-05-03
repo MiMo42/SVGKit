@@ -8,6 +8,10 @@
 #include <sys/types.h>
 #include <sys/sysctl.h>
 
+#if (!TARGET_OS_IPHONE)
+#import "SVGKit-OSX.Globals.h"
+#endif
+
 @interface SVGLength()
 @property(nonatomic,strong) CSSPrimitiveValue* internalCSSPrimitiveValue;
 @end
@@ -129,6 +133,8 @@ static float cachedDevicePixelsPerInch;
 
 +(float) pixelsPerInchForCurrentDevice
 {
+    #if (TARGET_OS_IPHONE)
+    
 	/** Using this as reference: http://en.wikipedia.org/wiki/Retina_Display and https://www.theiphonewiki.com/wiki/Models
       */
 	
@@ -218,6 +224,11 @@ static float cachedDevicePixelsPerInch;
 	
 	NSAssert(FALSE, @"Cannot determine the PPI values for current device; returning 0.0f - hopefully this will crash your code (you CANNOT run SVG's that use CM/IN/MM etc until you fix this)" );
 	return 0.0f; // Bet you'll get a divide by zero here...
+    
+    #else
+	//TODO: port to OS X.
+	return 72.0;
+    #endif
 }
 
 @end

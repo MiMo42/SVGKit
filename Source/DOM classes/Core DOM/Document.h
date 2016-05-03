@@ -54,6 +54,10 @@
 
 #import <Foundation/Foundation.h>
 
+#if (!TARGET_OS_IPHONE)
+#import "SVGKit-OSX.Globals.h"
+#endif
+
 /** ObjectiveC won't allow this: @class Node; */
 #import "Node.h"
 @class Element;

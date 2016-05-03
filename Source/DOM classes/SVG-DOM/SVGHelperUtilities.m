@@ -9,6 +9,10 @@
 #import "SVGSVGElement.h"
 #import "SVGGradientLayer.h"
 
+#if (!TARGET_OS_IPHONE)
+#import "SVGKit-OSX.Globals.h"
+#endif
+
 @implementation SVGHelperUtilities
 
 
@@ -463,7 +467,12 @@
 			strokeLayer.frame = localRect;
 
 			strokeLayer.fillColor = nil;
+            
+            #if (TARGET_OS_IPHONE)
 			strokeLayer.strokeColor = [UIColor blackColor].CGColor;
+            #else
+            strokeLayer.strokeColor = [NSColor blackColor].CGColor;
+            #endif
 
 			gradientLayer.mask = strokeLayer;
 			strokeLayer = (CAShapeLayer*) gradientLayer;
@@ -499,7 +508,11 @@
 		CAShapeLayer* maskLayer = [CAShapeLayer layer];
 		maskLayer.frame = localRect;
 		maskLayer.path = fillLayer.path;
+        #if (TARGET_OS_IPHONE)
 		maskLayer.fillColor = [UIColor blackColor].CGColor;
+        #else
+        maskLayer.fillColor = [NSColor blackColor].CGColor;
+        #endif
 		maskLayer.strokeColor = nil;
 		gradientLayer.mask = maskLayer;
 		if ( [gradientLayer.type isEqualToString:kExt_CAGradientLayerRadial])

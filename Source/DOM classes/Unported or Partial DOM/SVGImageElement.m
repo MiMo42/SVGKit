@@ -8,28 +8,26 @@
 #import "SVGKSourceURL.h"
 #import "SVGKSourceNSData.h"
 
-#if TARGET_OS_IPHONE
-
+#if (TARGET_OS_IPHONE)
 #import <UIKit/UIKit.h>
-
 #else
+#import <Cocoa/Cocoa.h>
 #endif
 
 #if TARGET_OS_IPHONE
 #define AppleNativeImage UIImage
 #else
-#define AppleNativeImage CIImage
+#define AppleNativeImage NSImage
 #endif
 
 #define AppleNativeImageRef AppleNativeImage*
 
 CGImageRef SVGImageCGImage(AppleNativeImageRef img)
 {
-#if TARGET_OS_IPHONE
+#if (TARGET_OS_IPHONE)
     return img.CGImage;
 #else
-    NSBitmapImageRep* rep = [[[NSBitmapImageRep alloc] initWithCIImage:img] autorelease];
-    return rep.CGImage;
+    return [img CGImageForProposedRect:NULL context:nil hints:nil];
 #endif
 }
 
@@ -137,7 +135,11 @@ CGImageRef SVGImageCGImage(AppleNativeImageRef img)
             
             if( svg != nil )
             {
+                #if (TARGET_OS_IPHONE)
                 image = svg.UIImage;
+                #else
+                image = svg.NSImage;
+                #endif
             }
         }
     }
