@@ -1,6 +1,9 @@
-#import "SVGKExporterUIImage.h"
 
 #import "SVGKImage+CGContext.h" // needed for Context calls
+
+#if (TARGET_OS_IPHONE)
+
+#import "SVGKExporterUIImage.h"
 
 @implementation SVGKExporterUIImage
 
@@ -35,3 +38,5 @@
 }
 
 @end
+
+#endif

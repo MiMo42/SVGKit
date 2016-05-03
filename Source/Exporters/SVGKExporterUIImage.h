@@ -6,6 +6,8 @@
 #import <Foundation/Foundation.h>
 #import "SVGKImage.h"
 
+#if (TARGET_OS_IPHONE)
+
 @interface SVGKExporterUIImage : NSObject
 
 /**
@@ -29,3 +31,5 @@
 +(UIImage*) exportAsUIImage:(SVGKImage*) image antiAliased:(BOOL) shouldAntialias curveFlatnessFactor:(CGFloat) multiplyFlatness interpolationQuality:(CGInterpolationQuality) interpolationQuality;
 
 @end
+
+#endif

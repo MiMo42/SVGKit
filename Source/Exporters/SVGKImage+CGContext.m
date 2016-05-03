@@ -11,6 +11,10 @@
 #import "SVGRect.h"
 #import "SVGSVGElement.h"
 
+#if (!TARGET_OS_IPHONE)
+#import "SVGKit-OSX.Globals.h"
+#endif
+
 @implementation SVGKImage (CGContext)
 
 -(CGContextRef) newCGContextAutosizedToFit
@@ -45,7 +49,13 @@
 	startTime = [NSDate date];
 	
 	if( SVGRectIsInitialized(self.DOMTree.viewport) )
+    {
+        #if (TARGET_OS_IPHONE)
 		SVGKitLogInfo(@"[%@] DEBUG: rendering to CGContext using the current root-object's viewport (may have been overridden by user code): %@", [self class], NSStringFromCGRect(CGRectFromSVGRect(self.DOMTree.viewport)) );
+        #else
+		SVGKitLogInfo(@"[%@] DEBUG: rendering to CGContext using the current root-object's viewport (may have been overridden by user code): %@", [self class], NSStringFromRect(NSRectFromCGRect(CGRectFromSVGRect(self.DOMTree.viewport))));
+        #endif
+    }
 	
 	/** Typically a 10% performance improvement right here */
 	if( !shouldAntialias )
