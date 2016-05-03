@@ -20,7 +20,11 @@
 
 #import "CALayer+RecursiveClone.h"
 
+#if (TARGET_OS_IPHONE)
 #import "SVGKExporterUIImage.h" // needed for .UIImage property
+#else
+#import "SVGKExporterNSImage.h" // needed for .NSImage property
+#endif
 
 #if ENABLE_GLOBAL_IMAGE_CACHE_FOR_SVGKIMAGE_IMAGE_NAMED
 @interface SVGKImageCacheLine : NSObject
@@ -71,8 +75,12 @@ static NSMutableDictionary* globalSVGKImageCache;
 {
 	if( self == [SVGKImage class]) // Have to protect against subclasses ADDITIONALLY calling this, as a "[super initialize] line
 	{
+        #if (TARGET_OS_IPHONE)
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarningOrBackgroundNotification:) name:UIApplicationDidReceiveMemoryWarningNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryWarningOrBackgroundNotification:) name:UIApplicationDidEnterBackgroundNotification object:nil];
+        #else
+            // nothing yet
+        #endif
 	}
 }
 
@@ -421,10 +429,17 @@ static NSMutableDictionary* globalSVGKImageCache;
 	self.CALayerTree = nil; // invalidate the cached copy
 }
 
+#if (TARGET_OS_IPHONE)
 -(UIImage *)UIImage
 {
 	return [SVGKExporterUIImage exportAsUIImage:self antiAliased:TRUE curveFlatnessFactor:1.0f interpolationQuality:kCGInterpolationDefault]; // Apple defaults
 }
+#else
+-(NSImage *)NSImage
+{
+	return [SVGKExporterNSImage exportAsNSImage:self antiAliased:TRUE curveFlatnessFactor:1.0f interpolationQuality:kCGInterpolationDefault]; // Apple defaults
+}
+#endif
 
 // the these draw the image 'right side up' in the usual coordinate system with 'point' being the top-left.
 
@@ -632,7 +647,12 @@ static NSMutableDictionary* globalSVGKImageCache;
         
         [clipPathElement layoutLayer:clipLayer toMaskLayer:layer];
         
+        #if (TARGET_OS_IPHONE)
         SVGKitLogWarn(@"DOESNT WORK, APPLE's API APPEARS BROKEN???? - About to mask layer frame (%@) with a mask of frame (%@)", NSStringFromCGRect(layer.frame), NSStringFromCGRect(clipLayer.frame));
+        #else
+        SVGKitLogWarn(@"DOESNT WORK, APPLE's API APPEARS BROKEN???? - About to mask layer frame (%@) with a mask of frame (%@)",  NSStringFromRect(NSRectFromCGRect(layer.frame)), NSStringFromRect(NSRectFromCGRect(clipLayer.frame)));
+        #endif
+        
         layer.mask = clipLayer;
          // because it was created with a +1 retain count
     }
