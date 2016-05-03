@@ -7,10 +7,10 @@
 
 #import <CoreFoundation/CoreFoundation.h>
 
-#if TARGET_OS_IPHONE
-
+#if (TARGET_OS_IPHONE)
 #import <UIKit/UIKit.h>
-
+#else
+#import <Cocoa/Cocoa.h>
 #endif
 
 #define RGB_N(v) (v) / 255.0f

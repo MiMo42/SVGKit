@@ -7,6 +7,10 @@
 
 #import "SVGUtils.h"
 
+#if (!TARGET_OS_IPHONE)
+#import "SVGKit-OSX.Globals.h"
+#endif
+
 #define MAX_ACCUM 64
 #define NUM_COLORS 147
 
