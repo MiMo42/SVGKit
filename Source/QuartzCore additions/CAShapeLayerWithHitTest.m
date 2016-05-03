@@ -1,5 +1,9 @@
 #import "CAShapeLayerWithHitTest.h"
 
+#if (!TARGET_OS_IPHONE)
+#import "SVGKit-OSX.Globals.h"
+#endif
+
 /*! Used by the main ShapeElement (and all subclasses) to do perfect "containsPoint" calculations via Apple's API calls
  
  This will only be called if it's the root of an SVG document and the hit was in the parent view on screen,

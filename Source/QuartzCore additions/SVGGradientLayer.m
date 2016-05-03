@@ -80,6 +80,7 @@
     CGContextRestoreGState(ctx);
 }
 
+#if (TARGET_OS_IPHONE)
 - (void)setStopColor:(UIColor *)color forIdentifier:(NSString *)identifier {
     int i = 0;
     for (NSString *key in stopIdentifiers) {
@@ -99,6 +100,28 @@
         i++;
     }
 }
+#else
+- (void)setStopColor:(NSColor *)color forIdentifier:(NSString *)identifier {
+    int i = 0;
+    for (NSString *key in stopIdentifiers) {
+        if ([key isEqualToString:identifier]) {
+            NSMutableArray *arr = [NSMutableArray arrayWithArray:self.colors];
+            const CGFloat *colors = CGColorGetComponents((CGColorRef)[arr objectAtIndex:i]);
+            float a = colors[3];
+            const CGFloat *colors2 = CGColorGetComponents(color.CGColor);
+            float r = colors2[0];
+            float g = colors2[1];
+            float b = colors2[2];
+            [arr removeObjectAtIndex:i];
+            [arr insertObject:(id)[NSColor colorWithRed:r green:g blue:b alpha:a].CGColor atIndex:i];
+            [self setColors:[NSArray arrayWithArray:arr]];
+            return;
+        }
+        i++;
+    }
+}
+#endif
+
 
 - (BOOL)containsPoint:(CGPoint)p {
     BOOL boundsContains = CGRectContainsPoint(self.bounds, p);
