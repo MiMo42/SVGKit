@@ -33,6 +33,12 @@
 	else
 	{
 		self = [super initWithCoder:aDecoder];
+        #if (!TARGET_OS_IPHONE)
+        if (self)
+        {
+            [self setupLayer];
+        }
+        #endif
 	}
     if( self )
     {
@@ -46,7 +52,12 @@
 	self = [super initWithFrame:frame];
 	if( self )
 	{
+        #if (TARGET_OS_IPHONE)
 		self.backgroundColor = [UIColor clearColor];
+        #else
+        [self setupLayer];
+        self.layer.backgroundColor = [NSColor clearColor].CGColor;
+        #endif
 	}
 	return self;
 }
@@ -75,7 +86,11 @@
 	{
 		SVGKitLogWarn(@"[%@] WARNING: you have initialized an [%@] with a blank image (nil). Possibly because you're using Storyboards or NIBs which Apple won't allow us to decorate. Make sure you assign an SVGKImage to the .image property!", [self class], [self class]);
 		
+        #if (TARGET_OS_IPHONE)
 		self.backgroundColor = [UIColor clearColor];
+        #else
+        self.layer.backgroundColor = [NSColor clearColor].CGColor;
+        #endif
         
 /**
  ************* NB: it is critical that the string we're about to create is NOT INDENTED - the tabs would break the parsing!
@@ -132,14 +147,22 @@ style=\"font-size:24px;fill:#fffc45;fill-opacity:1\">SVG</tspan></text> \
 		SVGKitLogInfo(@"About to make a blank image using the inlined SVG = %@", svgStringDefaultContents);
 		
 		SVGKImage* defaultBlankImage = [SVGKImage imageWithSource:[SVGKSourceString sourceFromContentsOfString:svgStringDefaultContents]];
-		
+        
+        #if (TARGET_OS_IPHONE)
 		self.backgroundColor = [UIColor cyanColor];
+        #else
+        self.layer.backgroundColor = [NSColor cyanColor].CGColor;
+        #endif
 		
 		((SVGKLayer*) self.layer).SVGImage = defaultBlankImage;
 	}
 	else
 	{
+        #if (TARGET_OS_IPHONE)
 		self.backgroundColor = [UIColor clearColor];
+        #else
+        self.layer.backgroundColor = [NSColor clearColor].CGColor;
+        #endif
 		
 		((SVGKLayer*) self.layer).SVGImage = im;
 	}
@@ -154,6 +177,12 @@ style=\"font-size:24px;fill:#fffc45;fill-opacity:1\">SVG</tspan></text> \
 -(void)setImage:(SVGKImage *)image
 {
 	((SVGKLayer*)self.layer).SVGImage = image;
+    
+    #if (TARGET_OS_IPHONE)
+    self.backgroundColor = [UIColor clearColor];
+    #else
+    self.layer.backgroundColor = [NSColor clearColor].CGColor;
+    #endif
 }
 
 /** Delegate the call to the internal layer that's coded to handle this stuff automatically */
@@ -172,5 +201,14 @@ style=\"font-size:24px;fill:#fffc45;fill-opacity:1\">SVG</tspan></text> \
 	return[((SVGKLayer*)self.layer).endRenderTime timeIntervalSinceDate:((SVGKLayer*)self.layer).startRenderTime];
 }
 
+#pragma mark - Private Methods
+
+#if (!TARGET_OS_IPHONE)
+- (void)setupLayer
+{
+	self.layer = [[SVGKLayer alloc] init];
+	self.wantsLayer = YES;
+}
+#endif
 
 @end

@@ -74,7 +74,11 @@
 	self = [super initWithFrame:frame];
 	if( self )
 	{
+        #if (TARGET_OS_IPHONE)
 		self.backgroundColor = [UIColor clearColor];
+        #else
+        self.layer.backgroundColor = [NSColor clearColor].CGColor;
+        #endif
 	}
 	return self;
 }
@@ -99,7 +103,12 @@
     self.image = im;
     self.frame = CGRectMake( 0,0, im.size.width, im.size.height ); // NB: this uses the default SVG Viewport; an ImageView can theoretically calc a new viewport (but its hard to get right!)
     self.tileRatio = CGSizeZero;
+    
+    #if (TARGET_OS_IPHONE)
     self.backgroundColor = [UIColor clearColor];
+    #else
+    self.layer.backgroundColor = [NSColor clearColor].CGColor;
+    #endif
 }
 
 - (void)setImage:(SVGKImage *)image {
@@ -199,7 +208,11 @@
 		/*SVGKitLogVerbose(@"transform changed. Setting layer scale: %2.2f --> %2.2f", self.layer.contentsScale, self.transform.a);
 		 self.layer.contentsScale = self.transform.a;*/
 		[self.image.CALayerTree removeFromSuperlayer]; // force apple to redraw?
+        #if (TARGET_OS_IPHONE)
 		[self setNeedsDisplay];
+        #else
+        [self setNeedsDisplay:YES];
+        #endif
 	}
 	else
 	{
@@ -208,7 +221,11 @@
 			;
 		else
 		{
-			[self setNeedsDisplay];
+            #if (TARGET_OS_IPHONE)
+            [self setNeedsDisplay];
+            #else
+            [self setNeedsDisplay:YES];
+            #endif
 		}
 	}
 }
@@ -277,7 +294,11 @@
 	
 	//DEBUG: SVGKitLogVerbose(@"cols, rows: %i, %i ... scaleConvert: %@ ... tilesize: %@", cols, rows, NSStringFromCGSize(scaleConvertImageToView), NSStringFromCGSize(tileSize) );
 	/** To support tiling, and to allow internal shrinking, we use renderInContext */
+    #if (TARGET_OS_IPHONE)
 	CGContextRef context = UIGraphicsGetCurrentContext();
+    #else
+    CGContextRef context = [NSGraphicsContext currentContext].graphicsPort;
+    #endif
 	for( int k=0; k<rows; k++ )
 		for( int i=0; i<cols; i++ )
 		{
@@ -294,7 +315,12 @@
 	/** The border is VERY helpful when debugging rendering and touch / hit detection problems! */
 	if( self.showBorder )
 	{
+        #if (TARGET_OS_IPHONE)
 		[[UIColor blackColor] set];
+        #else
+        [[NSColor blackColor] set];
+        #endif
+        
 		CGContextStrokeRect(context, rect);
 	}
 	

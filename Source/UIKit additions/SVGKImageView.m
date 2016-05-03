@@ -48,6 +48,7 @@
     return nil;
 }
 
+#if (TARGET_OS_IPHONE)
 
 /**
  The intrinsic sized of the image view.
@@ -63,5 +64,29 @@
 
     return CGSizeZero;
 }
+
+#else
+
+- (BOOL)isFlipped
+{
+    return YES;
+}
+
+/**
+ The intrinsic sized of the image view.
+ 
+ This is useful for playing nicely with autolayout.
+ 
+ @return The size of the image if it has one, or CGSizeZero if not
+ */
+- (NSSize)intrinsicContentSize {
+    if ([self.image hasSize]) {
+        return self.image.size;
+    }
+    
+    return NSZeroSize;
+}
+
+#endif
 
 @end

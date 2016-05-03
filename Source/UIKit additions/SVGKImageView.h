@@ -1,6 +1,11 @@
 #import <Foundation/Foundation.h>
 
+#if (TARGET_OS_IPHONE)
 #import <UIKit/UIKit.h>
+#else
+#import <Cocoa/Cocoa.h>
+#endif
+
 #import "SVGKImage.h" // cannot import "SVGKit.h" because that would cause ciruclar imports
 
 /**
@@ -15,7 +20,11 @@
  NB: read the class-comment for each subclass carefully before deciding what to use.
  
  */
+#if (TARGET_OS_IPHONE)
 @interface SVGKImageView : UIView
+#else
+@interface SVGKImageView : NSView
+#endif
 
 @property(nonatomic,strong) SVGKImage* image;
 @property(nonatomic) BOOL showBorder; /*< mostly for debugging - adds a coloured 1-pixel border around the image */
