@@ -1,5 +1,9 @@
 #import "SVGKSourceLocalFile.h"
 
+#if (!TARGET_OS_IPHONE)
+#import "SVGKit-OSX.Globals.h"
+#endif
+
 @interface SVGKSourceLocalFile()
 @property (nonatomic, readwrite) BOOL wasRelative;
 @end

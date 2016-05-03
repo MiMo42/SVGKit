@@ -2,6 +2,10 @@
 
 #import "SVGKSourceURL.h" // used for delegating when asked to construct relative links
 
+#if (!TARGET_OS_IPHONE)
+#import "SVGKit-OSX.Globals.h"
+#endif
+
 @implementation SVGKSourceNSData
 
 -(NSString *)keyForAppleDictionaries
