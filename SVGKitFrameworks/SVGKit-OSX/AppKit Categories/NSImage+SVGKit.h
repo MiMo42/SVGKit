@@ -1,13 +1,15 @@
 //
-//  NSImage+SVGKit.m
+//  NSImage+SVGKit.h
 //  SVGKit-OSX
 //
 //  Created by Michael Monscheuer on 02/05/16.
 //  Copyright © 2016 Michael Monscheuer. All rights reserved.
 //
 
-#import "NSImage+SVGKit.h"
+#import <Cocoa/Cocoa.h>
 
-@implementation NSImage (SVGKit)
+@interface NSImage (SVGKit)
+
++ (NSImage *)imageWithData:(NSData *)data;
 
 @end

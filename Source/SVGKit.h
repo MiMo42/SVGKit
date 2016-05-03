@@ -61,7 +61,11 @@
 
 // MARK: - Framework Header File Content
 
+#if (TARGET_OS_IPHONE)
 #import <UIKit/UIKit.h>
+#else
+#import <Cocoa/Cocoa.h>
+#endif
 
 //! Project version number for SVGKitFramework-iOS.
 FOUNDATION_EXPORT double SVGKitFramework_VersionNumber;
