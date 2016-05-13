@@ -34,8 +34,10 @@
     }
 }
 
-- (void)renderInContext:(CGContextRef)ctx {
-	
+- (void)drawInContext:(CGContextRef)ctx {
+    
+    [super drawInContext:ctx];
+    
     CGContextSaveGState(ctx);
 
 	if (self.maskPath)
@@ -75,9 +77,10 @@
     } 
     else if (!CGRectIsEmpty(self.bounds)) {
     
-        [super renderInContext:ctx];
+        [super drawInContext:ctx];
     }
     CGContextRestoreGState(ctx);
+    
 }
 
 #if (TARGET_OS_IPHONE)
