@@ -140,7 +140,7 @@
 			CGRect rect = CGRectMake(startPoint.x, startPoint.y, radius*2, radius*2);
 			rect = CGRectApplyAffineTransform(rect, self.transform);
 			rect = CGRectApplyAffineTransform(rect, transformAbsolute);
-			radius =  CGRectGetHeight(rect)/2.;
+			radius =  MIN(CGRectGetHeight(rect),CGRectGetWidth(rect))/2.;
 		}
 		CGPoint gradientPoint = CGPointApplyAffineTransform(startPoint, self.transform);
 		
@@ -150,6 +150,17 @@
 			
 			gradientPoint.x -= CGRectGetMinX(objectRect);
 			gradientPoint.y -= CGRectGetMinY(objectRect);
+            
+			if (CGRectGetWidth(objectRect) != CGRectGetHeight(objectRect))
+			{
+				CGAffineTransform tr = CGAffineTransformMakeTranslation(gradientPoint.x, gradientPoint.y);
+				if (CGRectGetWidth(objectRect) > CGRectGetHeight(objectRect))
+					tr = CGAffineTransformScale(tr, CGRectGetWidth(objectRect)/CGRectGetHeight(objectRect), 1);
+				else
+					tr = CGAffineTransformScale(tr, 1, CGRectGetHeight(objectRect)/CGRectGetWidth(objectRect));
+				tr = CGAffineTransformTranslate(tr, -gradientPoint.x, -gradientPoint.y);
+				gradientLayer.radialTransform = tr;
+			}            
 		}
 		else
 		{
