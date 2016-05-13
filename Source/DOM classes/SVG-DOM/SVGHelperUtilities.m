@@ -516,8 +516,12 @@
 		maskLayer.strokeColor = nil;
 		gradientLayer.mask = maskLayer;
 		if ( [gradientLayer.type isEqualToString:kExt_CAGradientLayerRadial])
+            {
 			gradientLayer.maskPath = fillLayer.path;
+            [gradientLayer setNeedsDisplay];
+            }
 		gradientLayer.frame = fillLayer.frame;
+        
 		fillLayer = (CAShapeLayer* )gradientLayer;
 	}
 	else if( actualFill.length > 0 || actualFillOpacity.length > 0 )
