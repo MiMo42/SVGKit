@@ -17,7 +17,6 @@
 		06CDB15D1CD76E6600F5E21A /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CDB15A1CD76E3900F5E21A /* SVGKit.framework */; };
 		06CDB15E1CD76E6600F5E21A /* SVGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06CDB15A1CD76E3900F5E21A /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		06CDB1641CD76F1600F5E21A /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CDB1631CD76F1600F5E21A /* CocoaLumberjack.framework */; };
-		06CDB1651CD76F3900F5E21A /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06CDB1631CD76F1600F5E21A /* CocoaLumberjack.framework */; };
 		06CDB1661CD76F3900F5E21A /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 06CDB1631CD76F1600F5E21A /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		06CDB1B11CD77CDF00F5E21A /* gradients.svg in Resources */ = {isa = PBXBuildFile; fileRef = 06CDB16F1CD77CDF00F5E21A /* gradients.svg */; };
 		06CDB1B21CD77CDF00F5E21A /* Sample Licenses from svg-android project.txt in Resources */ = {isa = PBXBuildFile; fileRef = 06CDB1701CD77CDF00F5E21A /* Sample Licenses from svg-android project.txt */; };
@@ -230,7 +229,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				06CDB1641CD76F1600F5E21A /* CocoaLumberjack.framework in Frameworks */,
-				06CDB1651CD76F3900F5E21A /* CocoaLumberjack.framework in Frameworks */,
 				06CDB15D1CD76E6600F5E21A /* SVGKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,7 +487,7 @@
 		06CDB10D1CD76C1E00F5E21A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Michael Monscheuer";
 				TargetAttributes = {
 					06CDB1141CD76C1E00F5E21A = {
@@ -712,8 +710,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -756,8 +756,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
