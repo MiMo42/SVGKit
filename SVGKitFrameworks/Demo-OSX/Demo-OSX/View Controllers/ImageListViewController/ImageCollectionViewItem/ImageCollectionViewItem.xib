@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ImageCollectionViewItem">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="191" height="162"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SBT-q0-PYg">
+                    <rect key="frame" x="5" y="5" width="181" height="152"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="GNu-xw-JUh"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="SBT-q0-PYg" secondAttribute="trailing" constant="5" id="2jn-fV-Tvs"/>
+                <constraint firstAttribute="bottom" secondItem="SBT-q0-PYg" secondAttribute="bottom" constant="5" id="G3D-E2-qF7"/>
+                <constraint firstItem="SBT-q0-PYg" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="5" id="OJC-zz-aE5"/>
+                <constraint firstItem="SBT-q0-PYg" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="5" id="XU1-hj-kce"/>
+            </constraints>
+            <point key="canvasLocation" x="153.5" y="55"/>
+        </customView>
+        <collectionViewItem id="FSj-Vv-z1a" customClass="ImageCollectionViewItem">
+            <connections>
+                <outlet property="imageView" destination="SBT-q0-PYg" id="Upo-4q-xIb"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="zVU-1E-5i2"/>
+            </connections>
+        </collectionViewItem>
+    </objects>
+    <resources>
+        <image name="NSApplicationIcon" width="128" height="128"/>
+    </resources>
+</document>

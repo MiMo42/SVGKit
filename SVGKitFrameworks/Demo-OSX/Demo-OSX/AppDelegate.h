@@ -6,7 +6,7 @@
 //  Copyright © 2016 Michael Monscheuer. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
