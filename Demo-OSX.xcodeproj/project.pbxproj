@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06367D691E0D47B90044DB0D /* WebKitViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06367D671E0D47B90044DB0D /* WebKitViewerViewController.m */; };
 		0636A3DA1DB4DAF200407464 /* MainSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0636A3D91DB4DAF200407464 /* MainSplitViewController.m */; };
 		0636A3DF1DB4E49100407464 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0636A3DE1DB4E49100407464 /* MainWindowController.m */; };
 		0636A3E51DB4E99000407464 /* CenteringClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0636A3E41DB4E99000407464 /* CenteringClipView.m */; };
@@ -87,6 +88,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		06367D661E0D47B90044DB0D /* WebKitViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebKitViewerViewController.h; sourceTree = "<group>"; };
+		06367D671E0D47B90044DB0D /* WebKitViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebKitViewerViewController.m; sourceTree = "<group>"; };
 		0636A3D81DB4DAF200407464 /* MainSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSplitViewController.h; sourceTree = "<group>"; };
 		0636A3D91DB4DAF200407464 /* MainSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainSplitViewController.m; sourceTree = "<group>"; };
 		0636A3DD1DB4E49100407464 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
@@ -223,6 +226,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06367D641E0D479A0044DB0D /* WebKitViewerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				06367D661E0D47B90044DB0D /* WebKitViewerViewController.h */,
+				06367D671E0D47B90044DB0D /* WebKitViewerViewController.m */,
+			);
+			path = WebKitViewerViewController;
+			sourceTree = "<group>";
+		};
 		0636A3D51DB4DA7400407464 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +243,7 @@
 				06A4A8481DB8A35900F0C865 /* ImageListViewController */,
 				06A4A84C1DB8A3EA00F0C865 /* ImageViewerContainerViewController */,
 				06F123091DC762A40057DF48 /* ImageViewerViewController */,
+				06367D641E0D479A0044DB0D /* WebKitViewerViewController */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -698,6 +711,7 @@
 				0636A3DF1DB4E49100407464 /* MainWindowController.m in Sources */,
 				06A4A8561DB8EBD300F0C865 /* ImageCollectionViewItem.m in Sources */,
 				06A4A8431DB4F0E300F0C865 /* ImageFile.m in Sources */,
+				06367D691E0D47B90044DB0D /* WebKitViewerViewController.m in Sources */,
 				0636A3DA1DB4DAF200407464 /* MainSplitViewController.m in Sources */,
 				0636A3E51DB4E99000407464 /* CenteringClipView.m in Sources */,
 				06A4A84F1DB8A41E00F0C865 /* ImageViewersSplitViewController.m in Sources */,

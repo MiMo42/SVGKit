@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jvK-a9-PL3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="jvK-a9-PL3">
     <dependencies>
         <deployment version="101100" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="11542"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -884,7 +884,7 @@
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UsI-1v-xKO">
                                 <rect key="frame" x="0.0" y="0.0" width="217" height="300"/>
-                                <clipView key="contentView" id="T2Y-aT-SwR">
+                                <clipView key="contentView" drawsBackground="NO" id="T2Y-aT-SwR">
                                     <rect key="frame" x="0.0" y="0.0" width="217" height="300"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -927,7 +927,7 @@
                 <splitViewController id="Vnt-mx-isd" userLabel="SVG Viewers Split View Controller" customClass="ImageViewersSplitViewController" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="K0v-Gf-EHS"/>
-                        <splitViewItem collapsed="YES" id="Ect-DM-63Q"/>
+                        <splitViewItem id="Ect-DM-63Q"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" id="peB-0B-Y5T">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -992,15 +992,15 @@
             </objects>
             <point key="canvasLocation" x="-349" y="1504"/>
         </scene>
-        <!--SVGKit Viewer-->
+        <!--WebKit Viewer-->
         <scene sceneID="8ra-z0-BVI">
             <objects>
-                <viewController id="yXI-fU-kUk" userLabel="SVGKit Viewer" sceneMemberID="viewController">
+                <viewController id="yXI-fU-kUk" userLabel="WebKit Viewer" customClass="WebKitViewerViewController" sceneMemberID="viewController">
                     <view key="view" id="Orl-eS-MRD">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <webView translatesAutoresizingMaskIntoConstraints="NO" id="CfB-9U-jiz" customClass="WKWebView" customModule="WebKit">
+                            <webView translatesAutoresizingMaskIntoConstraints="NO" id="Vjc-sB-HMb">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                 <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
                                     <nil key="identifier"/>
@@ -1008,12 +1008,15 @@
                             </webView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="CfB-9U-jiz" secondAttribute="trailing" id="23M-pn-1Yk"/>
-                            <constraint firstItem="CfB-9U-jiz" firstAttribute="top" secondItem="Orl-eS-MRD" secondAttribute="top" id="MLj-TE-yeZ"/>
-                            <constraint firstAttribute="bottom" secondItem="CfB-9U-jiz" secondAttribute="bottom" id="aQY-f3-PLU"/>
-                            <constraint firstItem="CfB-9U-jiz" firstAttribute="leading" secondItem="Orl-eS-MRD" secondAttribute="leading" id="exJ-2M-gZ3"/>
+                            <constraint firstAttribute="bottom" secondItem="Vjc-sB-HMb" secondAttribute="bottom" id="2wm-Kw-5YW"/>
+                            <constraint firstItem="Vjc-sB-HMb" firstAttribute="top" secondItem="Orl-eS-MRD" secondAttribute="top" id="920-ga-S7u"/>
+                            <constraint firstItem="Vjc-sB-HMb" firstAttribute="leading" secondItem="Orl-eS-MRD" secondAttribute="leading" id="UzE-qL-jGC"/>
+                            <constraint firstAttribute="trailing" secondItem="Vjc-sB-HMb" secondAttribute="trailing" id="qS7-7B-es1"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="Vjc-sB-HMb" id="onF-zi-vV1"/>
+                    </connections>
                 </viewController>
                 <customObject id="3k7-PT-o8B" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

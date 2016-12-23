@@ -9,6 +9,7 @@
 @import SVGKit;
 
 #import "ImageViewersSplitViewController.h"
+#import "WebKitViewerViewController.h"
 
 @interface ImageViewersSplitViewController ()
 
@@ -65,11 +66,19 @@
 
 - (void)_updateViewers
 {
+    // Update SVGKit Viewer
     ImageViewerViewController *viewController = (ImageViewerViewController *)[_mainImageViewerSplitViewItem viewController];
     if (![viewController isKindOfClass:[ImageViewerViewController class]])
         return;
 
     [viewController setImageFile:self.imageFile];
+    
+    // Update WebKit Viewer
+    WebKitViewerViewController *webKitViewerViewController = (WebKitViewerViewController *)[_safariViewerSplitViewItem viewController];
+    if (![webKitViewerViewController isKindOfClass:[WebKitViewerViewController class]])
+        return;
+    
+    [webKitViewerViewController setImageFile:self.imageFile];
 }
 
 @end
