@@ -5,6 +5,8 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <plugIn identifier="com.apple.WebKitIBPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
+        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -664,10 +666,10 @@
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="fEM-GY-wAh"/>
                                 <toolbarItem implicitItemIdentifier="C6B3E142-2332-409F-9DA2-1BDC0D840B19" label="View" paletteLabel="View" id="lr3-QY-8SH" userLabel="View">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="63" height="24"/>
-                                    <size key="maxSize" width="119" height="26"/>
+                                    <size key="minSize" width="120" height="25"/>
+                                    <size key="maxSize" width="121" height="26"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="AJG-MD-ypV">
-                                        <rect key="frame" x="0.0" y="14" width="119" height="26"/>
+                                        <rect key="frame" x="0.0" y="14" width="121" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="y1k-ty-cMg">
                                             <font key="font" metaFont="system"/>
@@ -864,15 +866,104 @@
         <!--SVG Info View Controller-->
         <scene sceneID="Bnp-Fb-qPS">
             <objects>
-                <viewController id="DN2-FU-Ywy" userLabel="SVG Info View Controller" sceneMemberID="viewController">
+                <viewController id="DN2-FU-Ywy" userLabel="SVG Info View Controller" customClass="InfoViewController" sceneMemberID="viewController">
                     <view key="view" id="OmV-dp-UGW">
                         <rect key="frame" x="0.0" y="0.0" width="203" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zQj-Y6-XMe">
+                                <rect key="frame" x="42" y="225" width="74" height="42"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wtR-3N-x9v">
+                                        <rect key="frame" x="0.0" y="25" width="69" height="17"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUK-Ug-h9l">
+                                                <rect key="frame" x="-2" y="0.0" width="40" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Width" id="nKS-ym-R4w">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTl-ll-l81">
+                                                <rect key="frame" x="42" y="0.0" width="29" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="###" id="3cn-6J-TXL">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nco-ij-pWh">
+                                        <rect key="frame" x="0.0" y="0.0" width="74" height="17"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EyQ-tJ-sPw">
+                                                <rect key="frame" x="-2" y="0.0" width="45" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Height" id="qmH-fl-hgD">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivN-zD-n1d">
+                                                <rect key="frame" x="47" y="0.0" width="29" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="###" id="bxL-1L-9uh">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8P6-cP-TIf">
+                                <rect key="frame" x="6" y="275" width="191" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Image Size" id="nRt-Jb-K13">
+                                    <font key="font" metaFont="systemSemibold" size="13"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="zQj-Y6-XMe" firstAttribute="top" secondItem="8P6-cP-TIf" secondAttribute="bottom" constant="8" id="7l7-rn-x3Z"/>
+                            <constraint firstItem="8P6-cP-TIf" firstAttribute="leading" secondItem="OmV-dp-UGW" secondAttribute="leading" constant="8" id="fCc-iF-97u"/>
+                            <constraint firstItem="zQj-Y6-XMe" firstAttribute="leading" secondItem="OmV-dp-UGW" secondAttribute="leading" constant="42" id="hQE-uF-a6I"/>
+                            <constraint firstItem="8P6-cP-TIf" firstAttribute="top" secondItem="OmV-dp-UGW" secondAttribute="top" constant="8" id="lQl-MZ-x9Z"/>
+                            <constraint firstAttribute="trailing" secondItem="8P6-cP-TIf" secondAttribute="trailing" constant="8" id="s4c-ZV-SYB"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="AUe-1c-KcM" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="4TG-T4-AfO"/>
             </objects>
-            <point key="canvasLocation" x="243" y="1024"/>
+            <point key="canvasLocation" x="242.5" y="1024"/>
         </scene>
         <!--Image List Controller-->
         <scene sceneID="ysI-nL-mj3">

@@ -10,6 +10,8 @@
 
 #import "ImageFile.h"
 
+extern NSString * const SVGImageDidChangeNotification;
+
 typedef NS_ENUM(NSUInteger, MainSVGViewerType) {
     MainSVGViewerTypeFast,
     MainSVGViewerTypeLayered

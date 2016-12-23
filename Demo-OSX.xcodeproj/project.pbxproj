@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		06367D691E0D47B90044DB0D /* WebKitViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06367D671E0D47B90044DB0D /* WebKitViewerViewController.m */; };
+		06367D6E1E0D540E0044DB0D /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06367D6D1E0D540E0044DB0D /* InfoViewController.m */; };
 		0636A3DA1DB4DAF200407464 /* MainSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0636A3D91DB4DAF200407464 /* MainSplitViewController.m */; };
 		0636A3DF1DB4E49100407464 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0636A3DE1DB4E49100407464 /* MainWindowController.m */; };
 		0636A3E51DB4E99000407464 /* CenteringClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0636A3E41DB4E99000407464 /* CenteringClipView.m */; };
@@ -90,6 +91,8 @@
 /* Begin PBXFileReference section */
 		06367D661E0D47B90044DB0D /* WebKitViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebKitViewerViewController.h; sourceTree = "<group>"; };
 		06367D671E0D47B90044DB0D /* WebKitViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebKitViewerViewController.m; sourceTree = "<group>"; };
+		06367D6C1E0D540E0044DB0D /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		06367D6D1E0D540E0044DB0D /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		0636A3D81DB4DAF200407464 /* MainSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainSplitViewController.h; sourceTree = "<group>"; };
 		0636A3D91DB4DAF200407464 /* MainSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainSplitViewController.m; sourceTree = "<group>"; };
 		0636A3DD1DB4E49100407464 /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
@@ -235,9 +238,19 @@
 			path = WebKitViewerViewController;
 			sourceTree = "<group>";
 		};
+		06367D6B1E0D53F80044DB0D /* InfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				06367D6C1E0D540E0044DB0D /* InfoViewController.h */,
+				06367D6D1E0D540E0044DB0D /* InfoViewController.m */,
+			);
+			path = InfoViewController;
+			sourceTree = "<group>";
+		};
 		0636A3D51DB4DA7400407464 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				06367D6B1E0D53F80044DB0D /* InfoViewController */,
 				0636A3D71DB4DA8F00407464 /* MainSplitViewController */,
 				06A4A8441DB50BB800F0C865 /* ImageCollectionListViewController */,
 				06A4A8481DB8A35900F0C865 /* ImageListViewController */,
@@ -715,6 +728,7 @@
 				0636A3DA1DB4DAF200407464 /* MainSplitViewController.m in Sources */,
 				0636A3E51DB4E99000407464 /* CenteringClipView.m in Sources */,
 				06A4A84F1DB8A41E00F0C865 /* ImageViewersSplitViewController.m in Sources */,
+				06367D6E1E0D540E0044DB0D /* InfoViewController.m in Sources */,
 				06A4A84B1DB8A38100F0C865 /* ImageListViewController.m in Sources */,
 				06CDB1201CD76C1E00F5E21A /* ViewController.m in Sources */,
 				06A4A83F1DB4F0AC00F0C865 /* ImageCollection.m in Sources */,

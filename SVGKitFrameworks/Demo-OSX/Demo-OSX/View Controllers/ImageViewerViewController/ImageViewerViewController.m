@@ -10,6 +10,8 @@
 
 #import "ImageViewerViewController.h"
 
+NSString * const SVGImageDidChangeNotification = @"SVGImageDidChangeNotification";
+
 @interface ImageViewerViewController ()
 
 @property (weak) IBOutlet NSScrollView *viewerScrollView;
@@ -128,6 +130,8 @@
         [svgImageView setNeedsLayout:YES];
     }
 */
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:SVGImageDidChangeNotification object:self.svgImage];
 }
 
 - (void)_updateDocumentView
